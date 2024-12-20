@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhtWndReader.iOS", "WhtWndReader.iOS\WhtWndReader.iOS.csproj", "{8AB26C9B-A870-9675-7217-632471D1B0F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhtWndReader.Core", "WhtWndReader.Core\WhtWndReader.Core.csproj", "{621080EA-6F1A-41C4-9A43-B4BFEDFE695B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhtWndReader.Catalyst", "WhtWndReader.Catalyst\WhtWndReader.Catalyst.csproj", "{6E135B1E-76C8-4BAF-8D22-E07B00603729}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AB26C9B-A870-9675-7217-632471D1B0F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB26C9B-A870-9675-7217-632471D1B0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB26C9B-A870-9675-7217-632471D1B0F2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8AB26C9B-A870-9675-7217-632471D1B0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB26C9B-A870-9675-7217-632471D1B0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB26C9B-A870-9675-7217-632471D1B0F2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{621080EA-6F1A-41C4-9A43-B4BFEDFE695B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621080EA-6F1A-41C4-9A43-B4BFEDFE695B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621080EA-6F1A-41C4-9A43-B4BFEDFE695B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621080EA-6F1A-41C4-9A43-B4BFEDFE695B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E135B1E-76C8-4BAF-8D22-E07B00603729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E135B1E-76C8-4BAF-8D22-E07B00603729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E135B1E-76C8-4BAF-8D22-E07B00603729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E135B1E-76C8-4BAF-8D22-E07B00603729}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="DrasticActions.UI" Version="0.0.3-preview" />
+    <PackageVersion Include="FishyFlip" Version="3.1.0-alpha.20" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+    <PackageVersion Include="MSTest.TestFramework" Version="3.6.0" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
+    <PackageVersion Include="Drastic.sqlite-net-pcl" Version="2.0.0-alpha" />
+    <PackageVersion Include="OneOf" Version="3.0.271" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="9.0.10" />
+    <PackageVersion Include="Markdig" Version="0.38.0" />
+    <PackageVersion Include="RazorBlade" Version="0.6.0" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageVersion Include="Redth.Maui.VirtualListView" Version="0.4.0" />
+    <PackageVersion Include="Drastic.Masonry" Version="1.0.2" />
+    <PackageVersion Include="BTProgressHUD" Version="2.1.1" />
+  </ItemGroup>
+</Project>

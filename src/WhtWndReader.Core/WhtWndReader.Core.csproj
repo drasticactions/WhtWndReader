@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <RootNamespace>WhtWndReader</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FishyFlip" />
+    <PackageReference Include="Drastic.Masonry" />
+    <PackageReference Include="BTProgressHUD" />
+    <PackageReference Include="Drastic.sqlite-net-pcl" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+    <PackageReference Include="RazorBlade" />
+    <PackageReference Include="Markdig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <RazorBlade Update="EmptyTemplate.cshtml">
+      <Namespace>WhtWndReader</Namespace>
+      <IsRazorBlade>True</IsRazorBlade>
+    </RazorBlade>
+    <RazorBlade Update="PostTemplate.cshtml">
+      <Namespace>WhtWndReader</Namespace>
+      <IsRazorBlade>True</IsRazorBlade>
+    </RazorBlade>
+  </ItemGroup>
+
+</Project>
