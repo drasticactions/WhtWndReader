@@ -34,6 +34,7 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
         this.logger = logger;
         this.View!.BackgroundColor = UIColor.SystemBackground;
         this.addButton = new UIBarButtonItem(UIBarButtonSystemItem.Add);
+        this.addButton.AccessibilityHint = NSBundle.MainBundle.GetLocalizedString("Add Author", "Add Author");
         this.Title = NSBundle.MainBundle.GetLocalizedString("Authors", "Authors");
         this.NavigationItem.RightBarButtonItem = this.addButton;
         this.addButton.Clicked += this.AddButton_Clicked;
@@ -43,6 +44,8 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
         this.TableView.DataSource = this;
         this.LoadAuthorsAsync().FireAndForgetSafeAsync(this.logger);
         this.settingsNavigationController = new UINavigationController(new SettingsViewController());
+        this.ModalInPresentation = true;
+        this.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
         this.settingsButton = new UIBarButtonItem(
             UIImage.GetSystemImage("gear"),
             UIBarButtonItemStyle.Plain,
@@ -50,6 +53,7 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
             {
                 this.PresentViewController(this.settingsNavigationController, true, null);
             });
+        this.settingsButton.AccessibilityHint = NSBundle.MainBundle.GetLocalizedString("Settings", "Settings");
         this.NavigationItem.LeftBarButtonItem = this.settingsButton;
     }
 

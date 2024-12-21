@@ -14,6 +14,7 @@ namespace WhtWndReader;
 public sealed class SettingsViewController : UITableViewController
 {
     private ThirdPartyViewController thirdPartyViewController;
+    private UIBarButtonItem closeButton;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsViewController"/> class.
@@ -37,5 +38,14 @@ public sealed class SettingsViewController : UITableViewController
                 }),
             },
         };
+
+        this.closeButton = new UIBarButtonItem(UIBarButtonSystemItem.Close);
+        this.NavigationItem.RightBarButtonItem = this.closeButton;
+        this.closeButton.Clicked += this.CloseButton_Clicked;
+    }
+
+    private void CloseButton_Clicked(object? sender, EventArgs e)
+    {
+        this.DismissViewController(true, null);
     }
 }

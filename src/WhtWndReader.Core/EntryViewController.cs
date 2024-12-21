@@ -22,9 +22,11 @@ public sealed class EntryViewController : UIViewController
         this.View!.BackgroundColor = UIColor.SystemBackground;
         this.webView = new EntryWebview(CGRect.Empty, new WKWebViewConfiguration());
         this.View.AddSubview(this.webView);
+        this.webView.Hidden = true;
 
         this.shareButton = new UIBarButtonItem(UIBarButtonSystemItem.Action);
         this.NavigationItem.RightBarButtonItem = this.shareButton;
+        this.shareButton.AccessibilityHint = NSBundle.MainBundle.GetLocalizedString("Share", "Share");
         this.shareButton.Enabled = false;
         this.shareButton.Clicked += this.ShareButton_Clicked;
 
@@ -53,6 +55,7 @@ public sealed class EntryViewController : UIViewController
             return;
         }
 
+        this.BeginInvokeOnMainThread(() => this.webView.Hidden = false);
         this.shareButton.Enabled = true;
         this.entry = entry;
         this.Title = entry.Title;

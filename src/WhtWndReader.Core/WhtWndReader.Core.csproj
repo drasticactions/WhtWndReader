@@ -20,6 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitVersion.MSBuild">
+			<PrivateAssets>All</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Assets\logo.png" />
   </ItemGroup>
 
