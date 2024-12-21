@@ -40,6 +40,7 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
         this.refreshButton = new UIBarButtonItem(UIBarButtonSystemItem.Refresh);
         this.NavigationItem.RightBarButtonItem = this.refreshButton;
         this.refreshButton.Clicked += this.RefreshButton_Clicked;
+        this.refreshButton.Enabled = false;
     }
 
     /// <summary>
@@ -60,6 +61,8 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
         {
             return;
         }
+
+        this.refreshButton.Enabled = true;
 
         this.Title = author.DisplayName;
         this.author = author;
@@ -92,8 +95,28 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
         return cell;
     }
 
+    /// <summary>
+    /// Reset the view.
+    /// </summary>
+    public void Reset(Author author)
+    {
+        if (this.author?.Id == author.Id)
+        {
+            this.author = null;
+            this.refreshButton.Enabled = false;
+            this.tableItems.Clear();
+            this.Title = string.Empty;
+            this.TableView.ReloadData();
+        }
+    }
+
     private void RefreshButton_Clicked(object? sender, EventArgs e)
     {
+        if (this.author is null)
+        {
+            return;
+        }
+
         Task.Run(
             async () =>
         {

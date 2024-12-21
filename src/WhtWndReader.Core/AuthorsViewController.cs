@@ -62,7 +62,7 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
     /// <inheritdoc/>
     public override string TitleForDeleteConfirmation(UITableView tableView, Foundation.NSIndexPath indexPath)
     {
-        return "Delete";
+        return NSBundle.MainBundle.GetLocalizedString("Delete", "Delete");
     }
 
     /// <inheritdoc/>

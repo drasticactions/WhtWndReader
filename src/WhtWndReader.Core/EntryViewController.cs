@@ -60,6 +60,20 @@ public sealed class EntryViewController : UIViewController
         this.webView.SetSource(content);
     }
 
+    /// <summary>
+    /// Reset the view.
+    /// </summary>
+    public void Reset(Author author)
+    {
+        if (this.entry?.AuthorId == author.Id)
+        {
+            this.shareButton.Enabled = false;
+            this.entry = null;
+            this.Title = string.Empty;
+            this.webView.SetSource(HtmlGenerator.GenerateEmptyHtml());
+        }
+    }
+
     private void ShareButton_Clicked(object? sender, EventArgs e)
     {
         if (this.entry == null)
@@ -94,6 +108,7 @@ public sealed class EntryViewController : UIViewController
         public EntryWebview(CGRect frame, WKWebViewConfiguration configuration)
             : base(frame, configuration)
         {
+            this.NavigationDelegate = new CustomWebViewNavigationDelegate();
         }
 
         /// <summary>
@@ -103,6 +118,27 @@ public sealed class EntryViewController : UIViewController
         public void SetSource(string html)
         {
             this.InvokeOnMainThread(() => this.LoadHtmlString(new NSString(html), null));
+        }
+
+        public class CustomWebViewNavigationDelegate : WKNavigationDelegate
+        {
+            public override void DecidePolicy(WKWebView webView, WKNavigationAction navigationAction, Action<WKNavigationActionPolicy> decisionHandler)
+            {
+                var url = navigationAction.Request.Url;
+                var navigationType = navigationAction.NavigationType;
+
+                // Check if it's an external link
+                if (navigationType == WKNavigationType.LinkActivated)
+                {
+                    // Check if the URL is not part of your domain/website
+                    UIApplication.SharedApplication.OpenUrl(url, new UIApplicationOpenUrlOptions() { OpenInPlace = false}, null);
+                    decisionHandler(WKNavigationActionPolicy.Cancel);
+                    return;
+                }
+
+                // Allow internal navigation
+                decisionHandler(WKNavigationActionPolicy.Allow);
+            }
         }
     }
 }

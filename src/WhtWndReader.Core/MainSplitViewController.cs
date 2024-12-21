@@ -42,7 +42,11 @@ public sealed class MainSplitViewController : UISplitViewController
         this.authorEntriesViewController = new AuthorEntriesViewController(blogService, this.logger);
         this.authorEntriesViewController.OnAuthorEntrySelected += this.OnAuthorEntrySelected;
         this.entryViewController = new EntryViewController(blogService, this.logger);
-
+        blogService.OnAuthorDeleted += (sender, author) =>
+        {
+            this.authorEntriesViewController.Reset(author);
+            this.entryViewController.Reset(author);
+        };
         this.SetViewController(this.authorsViewController, UISplitViewControllerColumn.Primary);
         this.SetViewController(this.authorEntriesViewController, UISplitViewControllerColumn.Supplementary);
         this.SetViewController(this.entryViewController, UISplitViewControllerColumn.Secondary);

@@ -34,6 +34,11 @@ public class BlogService
     public event EventHandler<Author>? OnAuthorInserted;
 
     /// <summary>
+    /// Fired when an author is deleted.
+    /// </summary>
+    public event EventHandler<Author>? OnAuthorDeleted; 
+
+    /// <summary>
     /// Gets the ATProtocol.
     /// </summary>
     public ATProtocol ATProtocol => this.atProtocol;
@@ -107,6 +112,8 @@ public class BlogService
     /// <returns>Rows changed.</returns>
     public async Task<int> DeleteAuthorAsync(Author author)
     {
-        return await this.databaseService.DeleteAuthorAsync(author.Id);
+        var result = await this.databaseService.DeleteAuthorAsync(author.Id);
+        this.OnAuthorDeleted?.Invoke(this, author);
+        return result;
     }
 }

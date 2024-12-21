@@ -73,6 +73,6 @@
   <ItemGroup>
     <!-- <Folder Include="..\Resources\ja.lproj" /> -->
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
-    <!-- <BundleResource Include="Resources\ja.lproj\Localizable.strings" /> -->
+    <BundleResource Include="Resources\ja.lproj\Localizable.strings" />
   </ItemGroup>
 </Project>
