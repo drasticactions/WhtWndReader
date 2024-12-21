@@ -1,3 +1,7 @@
+// <copyright file="EntryViewController.cs" company="Drastic Actions">
+// Copyright (c) Drastic Actions. All rights reserved.
+// </copyright>
+
 using FishyFlip.Models;
 using Masonry;
 using Microsoft.Extensions.Logging;
@@ -7,14 +11,22 @@ using WhtWndReader.Services;
 
 namespace WhtWndReader;
 
+/// <summary>
+/// Entry view controller.
+/// </summary>
 public sealed class EntryViewController : UIViewController
 {
-    private EntryWebview webView;
     private readonly BlogService blogService;
     private readonly ILogger logger;
-    private AuthorEntry? entry;
     private readonly UIBarButtonItem shareButton;
+    private EntryWebview webView;
+    private AuthorEntry? entry;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EntryViewController"/> class.
+    /// </summary>
+    /// <param name="blogService">Blog Service.</param>
+    /// <param name="logger">Logger.</param>
     public EntryViewController(BlogService blogService, ILogger logger)
     {
         this.blogService = blogService;
@@ -66,6 +78,7 @@ public sealed class EntryViewController : UIViewController
     /// <summary>
     /// Reset the view.
     /// </summary>
+    /// <param name="author">Author.</param>
     public void Reset(Author author)
     {
         if (this.entry?.AuthorId == author.Id)

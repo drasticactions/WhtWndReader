@@ -30,11 +30,15 @@ public sealed class SettingsViewController : UITableViewController
             {
                 new StringElement(Assembly.GetExecutingAssembly().GetName().Version!.ToString()),
             },
-            new Section()
+            new Section("External")
             {
                 ActionElement.Create(NSBundle.MainBundle.GetLocalizedString("Third Party Licenses", "Third Party Licenses"), () =>
                 {
                     this.NavigationController!.PushViewController(this.thirdPartyViewController, true);
+                }),
+                ActionElement.Create(NSBundle.MainBundle.GetLocalizedString("Github", "Github"), () =>
+                {
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("https://github.com/drasticactions/whtwndreader"), new UIApplicationOpenUrlOptions(), null);
                 }),
             },
         };

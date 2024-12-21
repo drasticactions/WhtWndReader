@@ -49,6 +49,7 @@ public static class HtmlGenerator
         {
             link.GetAttributes().AddPropertyIfNotExist("target", "_blank");
         }
+
         return await new PostTemplate(new PostTemplateModel() { Content = document.ToHtml() }).RenderAsync();
     }
 

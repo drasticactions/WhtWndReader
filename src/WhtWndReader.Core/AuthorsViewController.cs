@@ -14,13 +14,13 @@ namespace WhtWndReader;
 /// </summary>
 public sealed class AuthorsViewController : UITableViewController, IUITableViewDataSource, IUITableViewDelegate
 {
-    private List<Author> tableItems = new();
     private const string CellIdentifier = "AuthorCell";
     private readonly BlogService blogService;
     private readonly UIBarButtonItem addButton;
     private readonly ILogger logger;
     private readonly UIBarButtonItem settingsButton;
     private readonly UINavigationController settingsNavigationController;
+    private List<Author> tableItems = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorsViewController"/> class.
@@ -88,7 +88,7 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
             case UITableViewCellEditingStyle.Delete:
                 this.blogService.DeleteAuthorAsync(this.tableItems[indexPath.Row]).FireAndForgetSafeAsync();
                 this.tableItems.RemoveAt(indexPath.Row);
-                tableView.DeleteRows (new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
+                tableView.DeleteRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.Fade);
                 break;
             case UITableViewCellEditingStyle.None:
                 this.logger.LogWarning("CommitEditingStyle:None called");

@@ -11,7 +11,6 @@ namespace WhtWndReader.Models;
 /// </summary>
 public class AuthorEntry
 {
-
     /// <summary>
     /// Gets the ID.
     /// The ID author entry is the ATUri for the given entry, and should be unique.

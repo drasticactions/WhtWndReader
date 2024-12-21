@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <IsAotCompatible>true</IsAotCompatible>
     <RootNamespace>WhtWndReader</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,13 +18,6 @@
     <PackageReference Include="RazorBlade" />
     <PackageReference Include="Markdig" />
     <PackageReference Include="DrasticActions.UI.iOS" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="GitVersion.MSBuild">
-			<PrivateAssets>All</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
   </ItemGroup>
 
   <ItemGroup>

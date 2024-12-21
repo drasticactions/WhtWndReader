@@ -84,7 +84,8 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
         this.OnAuthorEntrySelected?.Invoke(this, item);
     }
 
-    public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+    /// <inheritdoc/>
+    public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
     {
         var cell = tableView.DequeueReusableCell(CellIdentifier, indexPath);
         var item = this.tableItems[indexPath.Row];
@@ -98,6 +99,7 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
     /// <summary>
     /// Reset the view.
     /// </summary>
+    /// <param name="author">Author.</param>
     public void Reset(Author author)
     {
         if (this.author?.Id == author.Id)

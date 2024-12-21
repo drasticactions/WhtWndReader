@@ -36,7 +36,7 @@ public class BlogService
     /// <summary>
     /// Fired when an author is deleted.
     /// </summary>
-    public event EventHandler<Author>? OnAuthorDeleted; 
+    public event EventHandler<Author>? OnAuthorDeleted;
 
     /// <summary>
     /// Gets the ATProtocol.
