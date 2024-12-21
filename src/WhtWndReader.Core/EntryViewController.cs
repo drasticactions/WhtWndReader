@@ -131,7 +131,7 @@ public sealed class EntryViewController : UIViewController
                 if (navigationType == WKNavigationType.LinkActivated)
                 {
                     // Check if the URL is not part of your domain/website
-                    UIApplication.SharedApplication.OpenUrl(url, new UIApplicationOpenUrlOptions() { OpenInPlace = false}, null);
+                    UIApplication.SharedApplication.OpenUrl(url, new UIApplicationOpenUrlOptions() { OpenInPlace = false }, null);
                     decisionHandler(WKNavigationActionPolicy.Cancel);
                     return;
                 }
