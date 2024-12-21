@@ -93,7 +93,7 @@ public class DatabaseService : IDisposable
     /// <returns>A task that represents the asynchronous operation. The task result contains a list of authors.</returns>
     public async Task<List<Models.Author>> GetAuthorsAsync()
     {
-        return await this.database.Table<Models.Author>().OrderBy(n => n.DisplayName).ToListAsync().ConfigureAwait(false);
+        return (await this.database.Table<Models.Author>().ToListAsync().ConfigureAwait(false)).OrderBy(n => n.DisplayName, StringComparer.OrdinalIgnoreCase).ToList();
     }
 
     /// <summary>
