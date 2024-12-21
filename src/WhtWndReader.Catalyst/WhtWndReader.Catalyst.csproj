@@ -12,12 +12,6 @@
     <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
     <RootNamespace>WhtWndReader</RootNamespace>
     <AssemblyName>WhtWndReader</AssemblyName>
-
-    <!--
-      Enable full trimming in Release mode.
-      To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
-    -->
-    <TrimMode Condition="'$(Configuration)' == 'Release'">full</TrimMode>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -65,6 +59,18 @@
     <PackageSigningKey>3rd Party Mac Developer Installer: YOURNAME (*******)</PackageSigningKey>
     <UseHardenedRuntime>true</UseHardenedRuntime>
   </PropertyGroup>-->
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <EnableCodeSigning>True</EnableCodeSigning>
+    <ProvisionType>Manual</ProvisionType>
+    <CreatePackage>true</CreatePackage>
+    <EnablePackageSigning>true</EnablePackageSigning>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>Apple Distribution: Miller Timothy (4RY43FCKF8)</CodesignKey>
+    <CodesignProvision>whtwndreader-catalyst</CodesignProvision>
+    <PackageSigningKey>3rd Party Mac Developer Installer: Miller Timothy (4RY43FCKF8)</PackageSigningKey>
+    <UseHardenedRuntime>true</UseHardenedRuntime>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <UseInterpreter>true</UseInterpreter>

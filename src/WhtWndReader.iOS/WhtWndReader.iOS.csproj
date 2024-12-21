@@ -7,12 +7,6 @@
     <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
     <RootNamespace>WhtWndReader</RootNamespace>
     <AssemblyName>WhtWndReader</AssemblyName>
-
-    <!--
-      Enable full trimming in Release mode.
-      To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
-    -->
-    <TrimMode Condition="'$(Configuration)' == 'Release'">full</TrimMode>
     <RootNamespace>WhtWndReader</RootNamespace>
   </PropertyGroup>
   
@@ -37,4 +31,9 @@
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
     <BundleResource Include="Resources\ja.lproj\Localizable.strings" />
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+     <CodesignKey>Apple Distribution: Miller Timothy (4RY43FCKF8)</CodesignKey>
+     <CodesignProvision>whtwndreader provision</CodesignProvision>
+  </PropertyGroup>
 </Project>
