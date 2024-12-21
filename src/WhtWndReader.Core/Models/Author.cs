@@ -32,4 +32,9 @@ public class Author
     /// Gets or sets the avatar.
     /// </summary>
     public byte[]? Avatar { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the author is a favorite.
+    /// </summary>
+    public bool IsFavorite { get; set; }
 }

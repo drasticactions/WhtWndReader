@@ -25,6 +25,7 @@ public sealed class EntryViewController : UIViewController
 
         this.shareButton = new UIBarButtonItem(UIBarButtonSystemItem.Action);
         this.NavigationItem.RightBarButtonItem = this.shareButton;
+        this.shareButton.Enabled = false;
         this.shareButton.Clicked += this.ShareButton_Clicked;
 
         this.webView.TranslatesAutoresizingMaskIntoConstraints = false;
@@ -52,6 +53,7 @@ public sealed class EntryViewController : UIViewController
             return;
         }
 
+        this.shareButton.Enabled = true;
         this.entry = entry;
         this.Title = entry.Title;
         var content = this.entry.Html ?? HtmlGenerator.GenerateEmptyHtml();

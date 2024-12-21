@@ -31,7 +31,7 @@ public sealed class MainSplitViewController : UISplitViewController
         var loggerFactory = new LoggerFactory();
         this.logger = loggerFactory.CreateLogger<MainSplitViewController>();
 
-        var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WhtWndReader.iOS", "WhtWndReader.iOS.db");
+        var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WhtWndReader", "WhtWndReader.db");
         Directory.CreateDirectory(Path.GetDirectoryName(databasePath)!);
         var dbService = new DatabaseService(databasePath);
         dbService.InitializeAsync().FireAndForgetSafeAsync(this.logger);

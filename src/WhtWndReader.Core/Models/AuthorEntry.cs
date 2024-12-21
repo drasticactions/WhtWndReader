@@ -51,4 +51,9 @@ public class AuthorEntry
     /// Gets or sets the visibility of the entry.
     /// </summary>
     public string? Visibility { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the author entry is a favorite.
+    /// </summary>
+    public bool IsFavorite { get; set; }
 }
