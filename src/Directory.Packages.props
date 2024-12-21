@@ -4,7 +4,8 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="DrasticActions.UI" Version="0.0.3-preview" />
+    <PackageVersion Include="DrasticActions.UI" Version="0.0.4-preview" />
+    <PackageVersion Include="DrasticActions.UI.iOS" Version="0.0.4-preview" />
     <PackageVersion Include="FishyFlip" Version="3.1.0-alpha.20" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.0" />
@@ -21,5 +22,6 @@
     <PackageVersion Include="Redth.Maui.VirtualListView" Version="0.4.0" />
     <PackageVersion Include="Drastic.Masonry" Version="1.0.2" />
     <PackageVersion Include="BTProgressHUD" Version="2.1.1" />
+    <PackageVersion Include="GitVersion.MSBuild" Version="6.0.2" />
   </ItemGroup>
 </Project>

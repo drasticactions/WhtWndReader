@@ -19,6 +19,8 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
     private readonly BlogService blogService;
     private readonly UIBarButtonItem addButton;
     private readonly ILogger logger;
+    private readonly UIBarButtonItem settingsButton;
+    private readonly UINavigationController settingsNavigationController;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorsViewController"/> class.
@@ -40,6 +42,15 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
         this.TableView.Delegate = this;
         this.TableView.DataSource = this;
         this.LoadAuthorsAsync().FireAndForgetSafeAsync(this.logger);
+        this.settingsNavigationController = new UINavigationController(new SettingsViewController());
+        this.settingsButton = new UIBarButtonItem(
+            UIImage.GetSystemImage("gear"),
+            UIBarButtonItemStyle.Plain,
+            (sender, args) =>
+            {
+                this.PresentViewController(this.settingsNavigationController, true, null);
+            });
+        this.NavigationItem.LeftBarButtonItem = this.settingsButton;
     }
 
     /// <summary>

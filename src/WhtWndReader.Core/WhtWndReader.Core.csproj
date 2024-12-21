@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
     <PackageReference Include="RazorBlade" />
     <PackageReference Include="Markdig" />
+    <PackageReference Include="DrasticActions.UI.iOS" />
   </ItemGroup>
 
   <ItemGroup>
