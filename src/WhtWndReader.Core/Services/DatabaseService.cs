@@ -56,6 +56,16 @@ public class DatabaseService : IDisposable
     }
 
     /// <summary>
+    /// Inserts or replaces an author in the database.
+    /// </summary>
+    /// <param name="author">The author to insert or replace.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the number of rows affected.</returns>
+    public async Task<int> UpdateAuthorsAsync(IEnumerable<Models.Author> author)
+    {
+        return await this.database.UpdateAllAsync(author).ConfigureAwait(false);
+    }
+
+    /// <summary>
     /// Deletes all author entries for a specific author ID.
     /// </summary>
     /// <param name="authorId">The ID of the author whose entries are to be deleted.</param>

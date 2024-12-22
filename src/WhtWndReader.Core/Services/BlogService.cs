@@ -51,6 +51,20 @@ public class BlogService
         => this.databaseService.GetAuthorsAsync();
 
     /// <summary>
+    /// Refresh author information.
+    /// </summary>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Authors.</returns>
+    public async Task<List<Author>> RefreshAuthorsAsync(CancellationToken? cancellationToken = default)
+    {
+        var authors = await this.GetAuthorsAsync();
+        var authorUpdateTasks = authors.Select(n => this.ATProtocol.GetAuthorAsync(ATIdentifier.Create(n.Id)!));
+        var updatedAuthors = await Task.WhenAll(authorUpdateTasks);
+        await this.databaseService.UpdateAuthorsAsync(updatedAuthors);
+        return await this.GetAuthorsAsync().ConfigureAwait(false);
+    }
+
+    /// <summary>
     /// Get author entries.
     /// </summary>
     /// <param name="author">Author.</param>

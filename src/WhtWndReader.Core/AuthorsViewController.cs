@@ -21,6 +21,7 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
     private readonly UIBarButtonItem settingsButton;
     private readonly UINavigationController settingsNavigationController;
     private List<Author> tableItems = new();
+    private UIRefreshControl refreshControl;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorsViewController"/> class.
@@ -32,6 +33,24 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
         this.blogService = blogService;
         this.blogService.OnAuthorInserted += this.BlogService_OnAuthorInserted;
         this.logger = logger;
+        this.refreshControl = new UIRefreshControl();
+        this.TableView.RefreshControl = this.refreshControl;
+        this.refreshControl.ValueChanged += async (sender, e) =>
+        {
+            this.refreshControl.BeginRefreshing();
+            try
+            {
+                await this.RefreshAuthorsAsync();
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(exception, "Error refreshing authors.");
+            }
+            finally
+            {
+                this.refreshControl.EndRefreshing();
+            }
+        };
         this.View!.BackgroundColor = UIColor.SystemBackground;
         this.addButton = new UIBarButtonItem(UIBarButtonSystemItem.Add);
         this.addButton.AccessibilityHint = NSBundle.MainBundle.GetLocalizedString("Add Author", "Add Author");
@@ -167,6 +186,19 @@ public sealed class AuthorsViewController : UITableViewController, IUITableViewD
         try
         {
             this.tableItems = await this.blogService.GetAuthorsAsync();
+            this.BeginInvokeOnMainThread(() => this.TableView.ReloadData());
+        }
+        catch (Exception e)
+        {
+            this.logger.LogError(e, "Failed to refresh data");
+        }
+    }
+
+    private async Task RefreshAuthorsAsync()
+    {
+        try
+        {
+            this.tableItems = await this.blogService.RefreshAuthorsAsync();
             this.BeginInvokeOnMainThread(() => this.TableView.ReloadData());
         }
         catch (Exception e)

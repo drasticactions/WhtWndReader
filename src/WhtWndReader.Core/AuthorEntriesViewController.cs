@@ -20,6 +20,7 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
     private Author? author;
     private List<AuthorEntry> tableItems = new();
     private UIBarButtonItem refreshButton;
+    private UIRefreshControl refreshControl;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorEntriesViewController"/> class.
@@ -31,8 +32,31 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
         this.logger = logger;
         this.blogService = blogService;
         this.logger = logger;
+        this.refreshControl = new UIRefreshControl();
         this.TableView.Delegate = this;
         this.TableView.DataSource = this;
+        this.TableView.RefreshControl = this.refreshControl;
+        this.refreshControl.ValueChanged += async (sender, e) =>
+        {
+            if (this.author is null)
+            {
+                return;
+            }
+
+            try
+            {
+                this.refreshControl.BeginRefreshing();
+                await this.RefreshAsync();
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogError(exception, "Error refreshing entries.");
+            }
+            finally
+            {
+                this.refreshControl.EndRefreshing();
+            }
+        };
         this.View!.BackgroundColor = UIColor.SystemBackground;
 
         this.TableView.RegisterClassForCellReuse(typeof(UITableViewCell), CellIdentifier);
@@ -122,8 +146,18 @@ public sealed class AuthorEntriesViewController : UITableViewController, IUITabl
         Task.Run(
             async () =>
         {
-            this.tableItems = await this.blogService.InsertEntriesAsync(this.author!);
-            this.InvokeOnMainThread(() => this.TableView.ReloadData());
+            await this.RefreshAsync();
         }).WithProgressHud(NSBundle.MainBundle.GetLocalizedString("Refreshing Entries", "Refreshing Entries"), this.logger).FireAndForgetSafeAsync(this.logger);
+    }
+
+    private async Task RefreshAsync()
+    {
+        if (this.author is null)
+        {
+            return;
+        }
+
+        this.tableItems = await this.blogService.InsertEntriesAsync(this.author!);
+        this.InvokeOnMainThread(() => this.TableView.ReloadData());
     }
 }
