@@ -14,7 +14,9 @@
     <IncludeSymbols>true</IncludeSymbols>
     <NoWarn>$(NoWarn);SA1208;SA0001</NoWarn>
     <GitVersionTargetFramework>net8.0</GitVersionTargetFramework>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <CFBundleShortVersionString>$(Version)</CFBundleShortVersionString>
+    <CFBundleVersion>$(Version)</CFBundleVersion>
   </PropertyGroup>
 
   <ItemGroup Condition=" ('$(IsPackable)' == 'true') or ('$(PackAsTool)' == 'true') ">
